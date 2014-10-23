@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-ng-app="movieStubApp">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Movie Stub - Book Movie Tickets Online</title>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
@@ -17,10 +13,18 @@
       <h1>Movie Stub</h1>
       <h4>Book Movie Tickets Online</h4>
       <hr />
-      <h4>Movies Screening :</h4>
+      <div class="row">
+        <div class="col-xs-3">
+          <h4>Tickets Available for:</h4>
+        </div>
+        <div class="col-xs-3">
+          <input type="text" class="form-control" placeholder="Search a movie" data-ng-model="search">
+        </div>
+      </div>
+      <br>
       <ul>
-        <li data-ng-repeat= "movie in movies">
-          {{movie.id}} - {{movie.name}} - {{movie.rating}}
+        <li data-ng-repeat= "movie in movies | orderBy: 'name' : true | filter:search">
+          {{ movie.id }} - {{ movie.name | uppercase }} - {{ movie.rating }}
         </li>
       </ul>
       
