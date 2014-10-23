@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="">
+<html lang="en" data-ng-app="movieStubApp">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,12 +11,18 @@
         <script type="text/javascript" src="js/lib/angular.min.js"></script>
         <script type="text/javascript" src="js/lib/jquery.min.js"></script>
         <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/controller/app.js"></script>
     </head>
-    <body class="container">
-      <h1>Movie Stub</h1> <h4>Book Movie Tickets Online</h4>
-      <br />
-      <input class="form-control" placeholder="Enter your favorite movie" data-ng-model="movieName" />
-      <h1 data-ng-show="movieName">My favorite movie is {{movieName}}!!</h1>
+    <body class="container" data-ng-controller="movieStubController">
+      <h1>Movie Stub</h1>
+      <h4>Book Movie Tickets Online</h4>
+      <hr />
+      <h4>Movies Screening :</h4>
+      <ul>
+        <li data-ng-repeat= "movie in movies">
+          {{movie.id}} - {{movie.name}} - {{movie.rating}}
+        </li>
+      </ul>
       
       
     </body>
