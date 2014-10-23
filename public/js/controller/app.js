@@ -1,8 +1,9 @@
-window.movieStubApp = angular.module('movieStubApp', []);
-
-movieStubApp.controller('movieStubController', function ($scope) {
-  $scope.movies = [
-      {
+window.movieStubApp = angular.module('movieStubApp', ['ngRoute']);
+ 
+movieStubApp.controller("movieStubController", function ($scope) {
+    $scope.headerSrc = "tmpl/header.html";
+    $scope.movies = [
+        {
             "id": 0,
             "name": "Iron Man",
             "rating": 5,
@@ -26,5 +27,23 @@ movieStubApp.controller('movieStubController', function ($scope) {
             "review": "Transformers: Dark of the Moon features Sam Witwicky taking his first tenuous steps into adulthood while remaining a reluctant human ally of Optimus Prime. The film centers around the space race between the U.S.S.R. and the USA, suggesting there was a hidden Transformers role in it all that remains one of the planet's most dangerous secrets. The villain of the third film will be Shockwave. (DreamWorks Pictures)",
             "thumb": "http://upload.wikimedia.org/wikipedia/en/6/66/Transformers07.jpg"
         }
-  ];
-})
+    ];
+ 
+    $scope.currMovie = null;
+    $scope.getMovieById = function (id) {
+        var movies = $scope.movies;
+        for (var i = 0; i < movies.length; i++) {
+            var movie = $scope.movies[i];
+            if (movie.id == id) {
+                $scope.currMovie = movie;
+            }
+        }
+    };
+    // A simple back function, that will help us navigate between views
+    $scope.back = function () {
+        window.history.back();
+    };
+});
+movieStubApp.controller("movieDetailsController", function ($scope, $routeParams) {
+    $scope.getMovieById($routeParams.id);
+});

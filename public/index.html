@@ -5,28 +5,16 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
         <script type="text/javascript" src="js/lib/angular.min.js"></script>
+        <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
         <script type="text/javascript" src="js/lib/jquery.min.js"></script>
         <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/controller/app.js"></script>
+        <script type="text/javascript" src="js/router/router.js"></script>
     </head>
     <body class="container" data-ng-controller="movieStubController">
-      <h1>Movie Stub</h1>
-      <h4>Book Movie Tickets Online</h4>
+      <div data-ng-include src="headerSrc"></div>
       <hr />
-      <div class="row">
-        <div class="col-xs-3">
-          <h4>Tickets Available for:</h4>
-        </div>
-        <div class="col-xs-3">
-          <input type="text" class="form-control" placeholder="Search a movie" data-ng-model="search">
-        </div>
-      </div>
-      <br>
-      <ul>
-        <li data-ng-repeat= "movie in movies | orderBy: 'name' : true | filter:search">
-          {{ movie.id }} - {{ movie.name | uppercase }} - {{ movie.rating }}
-        </li>
-      </ul>
+      <div data-ng-view=""></div>
       
       
     </body>
