@@ -43,6 +43,9 @@ movieStubApp.controller("movieStubController", function ($scope) {
     $scope.back = function () {
         window.history.back();
     };
+    $scope.getCount = function (n) {
+      return new Array(n);
+    };
 });
 movieStubApp.controller("movieDetailsController", function ($scope, $routeParams) {
     $scope.getMovieById($routeParams.id);
