@@ -26,7 +26,7 @@ movieStubApp.controller("movieDetailsController", function ($scope, $routeParams
     $scope.getMovieById($routeParams.id);
 });
 
-movie.movieStubApp.controller('bookTicketsController', function ($scope, $http, $location, $routeParams) {
+movieStubApp.controller("bookTicketsController", function ($scope, $http, $location, $routeParams) {
   $scope.getMovieById($routeParams.id);
   $scope.onlyNumbers = /^\d+$/;
   $scope.formData = {};
@@ -49,3 +49,4 @@ movie.movieStubApp.controller('bookTicketsController', function ($scope, $http, 
         });
   };
 });
+
