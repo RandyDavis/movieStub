@@ -3,6 +3,8 @@ var express = require("express"),
     port = process.env.PORT || 2595,
     bodyParser = require('body-parser'),
     morgan = require('morgan');
+
+var bookings = [];
  
 var app = express();
 app.use(morgan('combined'));
@@ -20,6 +22,18 @@ app.get('/', function (req, res) {
 app.get('/movies', function(req, res) {
   var movies = require('./data/movies.json');
   res.json(movies);
+});
+
+app.post('/book', function (req, res) {
+  var data = {
+    'qty': req.body.qty,
+    'date': req.body.date,
+    'id': req.body.movie_id,
+    'name': req.body.movie_name
+  };
+  bookings.push(data);
+  // res.render('public/tmpl/bookings.html');
+  res.json(bookings);
 });
  
 app.listen(port);
