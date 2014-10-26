@@ -24,6 +24,10 @@ app.get('/movies', function(req, res) {
   res.json(movies);
 });
 
+app.get('/bookings', function(req, res) {
+  res.json(bookings);
+});
+
 app.post('/book', function (req, res) {
   var data = {
     'qty': req.body.qty,
