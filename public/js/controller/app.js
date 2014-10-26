@@ -21,6 +21,12 @@ movieStubApp.controller("movieStubController", function ($scope, movieStubFactor
     $scope.getCount = function (n) {
       return new Array(n);
     };
+    $scope.isActive = function (route) {
+      return route === $location.path();
+    }
+    $scope.isActivePath = function (route) {
+      return ($location.path()).indexOf(route) >= 0;
+    }
 });
 movieStubApp.controller("movieDetailsController", function ($scope, $routeParams) {
     $scope.getMovieById($routeParams.id);
@@ -48,5 +54,9 @@ movieStubApp.controller("bookTicketsController", function ($scope, $http, $locat
             console.log(data);
         });
   };
+});
+
+movieStubApp.controller("bookingDetailsController", function ($scope, movieStubBookingsFactory) {
+  $scope.bookings = movieStubBookingsFactory.query();
 });
 
